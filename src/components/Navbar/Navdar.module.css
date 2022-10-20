@@ -1,0 +1,31 @@
+
+.nav {
+    grid-area: nav;
+    background-color: skyblue;
+    margin-right: 30px;
+    padding-left: 15px;
+    padding-top: 10px;
+}
+
+.item {
+    margin-bottom: 10px;
+}
+
+.item:last-child {
+    margin-top: 40px;
+    margin-bottom: 0;
+}
+
+
+.item a {
+    color: white;
+    font-size: 18px;
+}
+
+.item a:hover {
+    color: deepskyblue;
+}
+
+.item a:active {
+    color: white;
+}

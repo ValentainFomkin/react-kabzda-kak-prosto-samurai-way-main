@@ -1,0 +1,13 @@
+.posts {
+
+}
+
+.myPost {
+    grid-area: myPost;
+    font-size: 28px;
+}
+
+.newPosts {
+    grid-area: newPosts;
+}
+
