@@ -1,5 +1,5 @@
 .posts {
-
+    padding: 10px;
 }
 
 .myPost {
@@ -9,5 +9,6 @@
 
 .newPosts {
     grid-area: newPosts;
+    margin-top: 10px;
 }
 
