@@ -1,6 +1,7 @@
 
 .item {
     grid-area: postOne;
+    margin-bottom: 15px;
 }
 
 .item img {
@@ -9,3 +10,11 @@
     border-radius: 30px;
 }
 
+.likesAndMessage {
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+}
+
+.likesAndMessage .span {
+
+}
