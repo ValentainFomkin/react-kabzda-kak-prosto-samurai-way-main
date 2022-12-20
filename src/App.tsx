@@ -8,6 +8,7 @@ import {BrowserRouter, Route, Routes} from "react-router-dom";
 import {News} from "./components/News/News";
 import {Music} from "./components/Music/Music";
 import {Settings} from "./components/Settings/Settings";
+import {Friends} from "./components/Friends/Friends";
 
 export type AppPropsType = {
     // posts: PostsProps[]
@@ -21,7 +22,15 @@ export type AppPropsType = {
             dialogs: DialogsProps[]
             messages: MessagesProps[]
         }
+        siteBarPages: {
+            friends: FriendsProps[]
+        }
     }
+}
+export type FriendsProps = {
+    id: number
+    name: string
+    avatar: string
 }
 
 export type MessagesProps = {
@@ -32,6 +41,7 @@ export type MessagesProps = {
 export type DialogsProps = {
     id: number
     name: string
+    avatar: string
 }
 
 export type PostsProps = {
@@ -53,6 +63,7 @@ export const App = (props: AppPropsType) => {
                         <Route path='/news' element={<News/>}/>
                         <Route path='/music' element={<Music/>}/>
                         <Route path='/settings' element={<Settings/>}/>
+                        <Route path='/friends' element={<Friends state={props.state.siteBarPages}/>}/>
                     </Routes>
 
                 </div>
