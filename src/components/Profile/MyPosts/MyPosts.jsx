@@ -2,15 +2,18 @@ import React from "react";
 import s from './MyPosts.module.css'
 import {Post} from "./Post/Post";
 
-export const MyPosts = () => {
 
-    let posts = [
-        {id: 1, message: 'Hi, how are you', likesCount: 50},
-        {id: 2, message: 'It\'s my first post', likesCount: 21},
+export const MyPosts = (props) => {
 
-    ]
 
-    let postElements = posts.map(p => <Post message={p.message} likesCount={p.likesCount} id={p.id}/>)
+    let postElements = props.posts.map(p => <Post message={p.message} likesCount={p.likesCount} id={p.id}/>)
+
+    let newPostElement = React.createRef()
+
+    const addPost = () => {
+        let text = newPostElement.current.value
+       
+    }
 
     return (
 
@@ -19,10 +22,10 @@ export const MyPosts = () => {
                 <h3>My posts</h3>
             </div>
             <div>
-                <textarea name="" id="" cols="" rows=""></textarea>
+                <textarea ref={newPostElement}></textarea>
             </div>
             <div>
-                <button>Add post</button>
+                <button onClick={addPost}>Add post</button>
             </div>
             <div className={s.newPosts}>
                 <h3>New Post</h3>
