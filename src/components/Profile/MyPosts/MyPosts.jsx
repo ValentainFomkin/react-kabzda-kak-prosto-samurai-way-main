@@ -10,10 +10,6 @@ export const MyPosts = (props) => {
 
     let newPostElement = React.createRef()
 
-    const addPost = () => {
-        let text = newPostElement.current.value
-       
-    }
 
     return (
 
@@ -25,7 +21,7 @@ export const MyPosts = (props) => {
                 <textarea ref={newPostElement}></textarea>
             </div>
             <div>
-                <button onClick={addPost}>Add post</button>
+                <button>Add post</button>
             </div>
             <div className={s.newPosts}>
                 <h3>New Post</h3>
