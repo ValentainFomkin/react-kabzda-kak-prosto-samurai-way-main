@@ -15,8 +15,16 @@
     margin-bottom: 0px;
 }
 
-.dialogsItems .active {
-    color: gold;
+.navLinkTwo {
+    color: black;
+}
+
+.navLinkTwo:hover {
+    font-weight: 700;
+}
+
+.navLinkTwo:active {
+    color: #86ccea;
 }
 
 .messages {
@@ -25,4 +33,11 @@
 
 .message {
     padding: 10px;
+}
+
+.avatar {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
 }
