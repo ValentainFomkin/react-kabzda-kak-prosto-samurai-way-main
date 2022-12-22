@@ -6,6 +6,7 @@ export const FriendsItem = (props) => {
     return (
         <div>
             <NavLink to={path}>{props.name}</NavLink>
+
         </div>
     );
 };
