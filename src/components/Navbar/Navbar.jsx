@@ -1,6 +1,7 @@
 import React from "react";
 import s from './Navdar.module.css'
 import {NavLink} from "react-router-dom";
+import {ImagesForPages} from "../ImagesForPages/ImagesForPages";
 
 
 export const Navbar = () => {
@@ -23,14 +24,13 @@ export const Navbar = () => {
             </div>
             <div className={s.item}>
                 <NavLink to='/friends'>Friends</NavLink>
-                <div className={s.photoUnderFriends}>
-                    <img src="https://blog.hootsuite.com/wp-content/uploads/2021/07/free-stock-photos-03-scaled.jpeg"
-                         alt=""/>
-                    <img
-                        src="https://blog.hootsuite.com/wp-content/uploads/2021/07/free-stock-photos-03-scaled.jpeg"
-                        alt=""/>
-                    <img src="https://blog.hootsuite.com/wp-content/uploads/2021/07/free-stock-photos-03-scaled.jpeg"
-                         alt=""/>
+                <div>
+                    <ImagesForPages
+                        src={"https://blog.hootsuite.com/wp-content/uploads/2021/07/free-stock-photos-03-scaled.jpeg"}/>
+                    <ImagesForPages
+                        src={"https://blog.hootsuite.com/wp-content/uploads/2021/07/free-stock-photos-03-scaled.jpeg"}/>
+                    <ImagesForPages
+                        src={"https://blog.hootsuite.com/wp-content/uploads/2021/07/free-stock-photos-03-scaled.jpeg"}/>
                 </div>
 
 
