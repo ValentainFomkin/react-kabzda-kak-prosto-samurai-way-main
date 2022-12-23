@@ -67,3 +67,14 @@ export let state = {
     }
 
 }
+
+export const addPost = (postMessage) => {
+
+    let newPost = {id: 3, message: postMessage, likesCount: 123}
+    state.profilePages.posts.push(newPost)
+    // return {
+    //     ...state,
+    //     profilePages: state.profilePages,
+    //     posts: [newPost, ...state]
+// }
+}
