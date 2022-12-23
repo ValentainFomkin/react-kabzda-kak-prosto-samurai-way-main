@@ -1,3 +1,5 @@
+import {renderEntireTree} from "../render";
+
 export let state = {
     profilePages: {
         posts: [
@@ -71,7 +73,9 @@ export let state = {
 export const addPost = (postMessage) => {
 
     let newPost = {id: 3, message: postMessage, likesCount: 123}
-    state.profilePages.posts.push(newPost)
+    state.profilePages.posts.map((e, index) => e.id < index ? [newPost, ...e] : e)
+
+    renderEntireTree(state)
     // return {
     //     ...state,
     //     profilePages: state.profilePages,
