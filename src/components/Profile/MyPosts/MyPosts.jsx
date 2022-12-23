@@ -10,9 +10,10 @@ export const MyPosts = (props) => {
 
     let newPostElement = React.createRef()
 
-    const addPost = (id, message, likesCount) => {
+    const addPost = () => {
+        
         let text = newPostElement.current.value
-        alert(text)
+        props.addPost(text)
     }
 
     return (
