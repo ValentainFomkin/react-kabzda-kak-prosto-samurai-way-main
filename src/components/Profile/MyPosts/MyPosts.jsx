@@ -10,6 +10,10 @@ export const MyPosts = (props) => {
 
     let newPostElement = React.createRef()
 
+    const addPost = (id, message, likesCount) => {
+        let text = newPostElement.current.value
+        alert(text)
+    }
 
     return (
 
@@ -21,7 +25,7 @@ export const MyPosts = (props) => {
                 <textarea ref={newPostElement}></textarea>
             </div>
             <div>
-                <button>Add post</button>
+                <button onClick={addPost}>Add post</button>
             </div>
             <div className={s.newPosts}>
                 <h3>New Post</h3>
