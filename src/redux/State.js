@@ -1,6 +1,8 @@
-let renderEntireTree = () => {
-    console.log('state was changed')
-}
+const ADD_POST = 'ADD-POST';
+const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
+const ADD_MESSAGE = 'ADD-MESSAGE';
+const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
+
 
 export let store = {
     _state: {
@@ -117,6 +119,12 @@ export let store = {
         }
     }
 }
+
+export const addPostActionCreator = () => ({type: ADD_POST})
+export const updateNewPostTextActionCreator = (value) => ({type: UPDATE_NEW_POST_TEXT, newText: value})
+export const addNewMessageActionCreator = () => ({type: ADD_MESSAGE})
+export const onChangeMessageActionCreator = (value) => ({type: UPDATE_NEW_MESSAGE_TEXT, newText: value})
+
 
 // export let state = {
 //
