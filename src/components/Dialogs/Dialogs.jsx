@@ -7,19 +7,23 @@ import {Message} from "./Message/Message";
 export const Dialogs = (props) => {
 
 
-    let dialogElements = props.state.dialogs.map(d => <DialogItem avatar={d.avatar} name={d.name} id={d.id}/>)
+    let dialogElements = props.state.dialogs.map((d, index) => <DialogItem key={index} avatar={d.avatar} name={d.name}
+                                                                           id={d.id}/>)
 
-    let messageElement = props.state.messages.map(m => <Message message={m.message} id={m.id}/>)
+
+    let messageElement = props.state.messages.map((m, index) => <Message key={index} message={m.message} id={m.id}/>)
 
     let newMessageElement = React.createRef()
 
     const onChangeMessage = () => {
         let value = newMessageElement.current.value
-        props.updateNewMessageText(value)
+        // props.updateNewMessageText(value)
+        props.dispatch({type: 'UPDATE-NEW-MESSAGE-TEXT', newText: value})
     }
 
     const addNewMessage = () => {
-        props.addMessage()
+        // props.addMessage()
+        props.dispatch({type: 'ADD-MESSAGE'})
     }
 
     return (
