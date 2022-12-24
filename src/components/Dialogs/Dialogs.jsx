@@ -8,16 +8,19 @@ import {addNewMessageActionCreator, onChangeMessageActionCreator} from "../../re
 export const Dialogs = (props) => {
 
 
-    let dialogElements = props.state.dialogs.map((d, index) => <DialogItem key={index} avatar={d.avatar} name={d.name}
+    let dialogElements = props.state.dialogs.map((d, index) => <DialogItem key={index}
+                                                                           avatar={d.avatar}
+                                                                           name={d.name}
                                                                            id={d.id}/>)
-
 
     let messageElement = props.state.messages.map((m, index) => <Message key={index} message={m.message} id={m.id}/>)
 
-    let newMessageElement = React.createRef()
+    let newMessageText = props.state.newMessageText
 
-    const onChangeMessage = () => {
-        let value = newMessageElement.current.value
+    // let newMessageElement = React.createRef()
+
+    const onChangeMessage = (e) => {
+        let value = e.currentTarget.value
         // props.updateNewMessageText(value)
         // props.dispatch({type: 'UPDATE-NEW-MESSAGE-TEXT', newText: value})
         const action = onChangeMessageActionCreator(value);
@@ -37,9 +40,11 @@ export const Dialogs = (props) => {
                 {dialogElements}
             </div>
             <div className={s.messages}>
-                {messageElement}
+                <div>{messageElement}</div>
                 <div>
-                    <textarea onChange={onChangeMessage} value={props.state.newMessageText} ref={newMessageElement}/>
+                    <textarea onChange={onChangeMessage}
+                              value={newMessageText}
+                              placeholder={'Enter your message'}/>
                 </div>
                 <div>
                     <button onClick={addNewMessage}>add message
