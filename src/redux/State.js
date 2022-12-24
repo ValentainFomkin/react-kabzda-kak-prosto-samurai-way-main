@@ -73,47 +73,49 @@ export let store = {
         }
 
     },
-    getState() {
-        return this._state
-    },
     _callSubscriber() {
         console.log('state was changed')
     },
-    addPost() {
-        let newPost = {
-            id: 3,
-            message: this._state.profilePages.newPostText,
-            likesCount: 123
-        }
-        if (this._state.profilePages.newPostText) {
-            this._state.profilePages.posts.push(newPost)
-            this._state.profilePages.newPostText = ''
-        }
-        this._callSubscriber(this._state)
-    },
-    updateNewMessageText(newText) {
-        this._state.messagesPages.newMessageText = newText
-        this._callSubscriber(this._state)
-    },
-    updateNewPostText(newText) {
-        this._state.profilePages.newPostText = newText
-        this._callSubscriber(this._state)
+
+    getState() {
+        return this._state
     },
     subscribe(observer) {
         this._callSubscriber = observer
     },
-    addMessage() {
-        let newMessage = {
-            id: 4,
-            message: this._state.messagesPages.newMessageText,
-            likesCount: 23
+
+
+    dispatch(action) {
+        if (action.type === 'ADD-POST') {
+            let newPost = {
+                id: 3,
+                message: this._state.profilePages.newPostText,
+                likesCount: 123
+            }
+            if (this._state.profilePages.newPostText) {
+                this._state.profilePages.posts.push(newPost)
+                this._state.profilePages.newPostText = ''
+            }
+            this._callSubscriber(this._state)
+        } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
+            this._state.profilePages.newPostText = action.newText
+            this._callSubscriber(this._state)
+        } else if (action.type === 'ADD-MESSAGE') {
+            let newMessage = {
+                id: 4,
+                message: this._state.messagesPages.newMessageText,
+                likesCount: 23
+            }
+            if (this._state.messagesPages.newMessageText) {
+                this._state.messagesPages.messages.push(newMessage)
+                this._state.messagesPages.newMessageText = ''
+            }
+            this._callSubscriber(this._state)
+        } else if (action.type === 'UPDATE-NEW-MESSAGE-TEXT') {
+            this._state.messagesPages.newMessageText = action.newText
+            this._callSubscriber(this._state)
         }
-        if (this._state.messagesPages.newMessageText) {
-            this._state.messagesPages.messages.push(newMessage)
-            this._state.messagesPages.newMessageText = ''
-        }
-        renderEntireTree(this._state)
-    },
+    }
 }
 
 // export let state = {
