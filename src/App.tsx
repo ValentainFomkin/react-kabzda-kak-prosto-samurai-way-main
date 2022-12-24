@@ -28,10 +28,11 @@ export type AppPropsType = {
             friends: FriendsProps[]
         }
     }
-    addPost: () => void
-    updateNewPostText: (newText: string) => void
-    addMessage: () => void
-    updateNewMessageText: (newText: string) => void
+    // addPost: () => void
+    // updateNewPostText: (newText: string) => void
+    // addMessage: () => void
+    // updateNewMessageText: (newText: string) => void
+    dispatch: (action: string) => void
 }
 export type FriendsProps = {
     id: number
@@ -62,14 +63,15 @@ export const App = (props: AppPropsType) => {
                 <Routes>
                     <Route path='/dialogs' element={<Dialogs
                         state={props._state.messagesPages}
-                        addMessage={props.addMessage}
-                        updateNewMessageText={props.updateNewMessageText}
+                        dispatch={props.dispatch}
+                        // updateNewMessageText={props.dispatch}
                     />}/>
                     <Route path='/profile'
                            element={<Profile
                                profilePages={props._state.profilePages}
-                               addPost={props.addPost}
-                               updateNewPostText={props.updateNewPostText}/>}/>
+                               dispatch={props.dispatch}
+                               // updateNewPostText={props.dispatch}
+                           />}/>
                     <Route path='/news' element={<News/>}/>
                     <Route path='/music' element={<Music/>}/>
                     <Route path='/settings' element={<Settings/>}/>
