@@ -11,7 +11,7 @@ export const MyPosts = (props) => {
                                                            message={p.message}
                                                            likesCount={p.likesCount}
                                                            id={p.id}/>)
-    let newPostElement = React.createRef()
+    // let newPostElement = React.createRef()
 
     let newPostText = props.newPostText
 
@@ -22,8 +22,8 @@ export const MyPosts = (props) => {
         props.dispatch(action)
     }
 
-    const onPostChange = () => {
-        let value = newPostElement.current.value
+    const onPostChange = (e) => {
+        let value = e.currentTarget.value
         // props.updateNewPostText(value)
         // let action = {type: 'UPDATE-NEW-POST-TEXT', newText: value};
         let action = updateNewPostTextActionCreator(value);
@@ -37,8 +37,12 @@ export const MyPosts = (props) => {
                 <h3>My posts</h3>
             </div>
             <div>
-                <textarea placeholder={'Enter your message'} onChange={onPostChange} value={newPostText}
-                          ref={newPostElement}/>
+                <textarea
+                    onChange={onPostChange}
+                    value={newPostText}
+                    placeholder={'Enter your message'}
+                    // ref={newPostElement}
+                />
             </div>
             <div>
                 <button onClick={addPost}>Add post</button>
