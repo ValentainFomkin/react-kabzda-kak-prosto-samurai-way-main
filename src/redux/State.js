@@ -11,7 +11,7 @@ export let store = {
                 {id: 1, message: 'Hi, how are you', likesCount: 50},
                 {id: 2, message: 'It\'s my first post', likesCount: 21},
             ],
-            newPostText: 'it-kamasutra',
+            newPostText: '',
         },
         messagesPages: {
             dialogs: [
@@ -51,7 +51,7 @@ export let store = {
                 {id: 2, message: 'How is your it-kamasutra'},
                 {id: 3, message: 'Yo'},
             ],
-            newMessageText: 'Hi Valya'
+            newMessageText: ''
         },
         siteBarPages: {
             friends: [
@@ -88,21 +88,21 @@ export let store = {
 
 
     dispatch(action) {
-        if (action.type === 'ADD-POST') {
+        if (action.type === ADD_POST) {
             let newPost = {
                 id: 3,
                 message: this._state.profilePages.newPostText,
                 likesCount: 123
             }
             if (this._state.profilePages.newPostText) {
-                this._state.profilePages.posts.push(newPost)
+                this._state.profilePages.posts.unshift(newPost)
                 this._state.profilePages.newPostText = ''
             }
             this._callSubscriber(this._state)
-        } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
-            this._state.profilePages.newPostText = action.newText
+        } else if (action.type === UPDATE_NEW_POST_TEXT) {
+            this._state.profilePages.newPostText = action.newTextForPost
             this._callSubscriber(this._state)
-        } else if (action.type === 'ADD-MESSAGE') {
+        } else if (action.type === ADD_MESSAGE) {
             let newMessage = {
                 id: 4,
                 message: this._state.messagesPages.newMessageText,
@@ -113,17 +113,17 @@ export let store = {
                 this._state.messagesPages.newMessageText = ''
             }
             this._callSubscriber(this._state)
-        } else if (action.type === 'UPDATE-NEW-MESSAGE-TEXT') {
-            this._state.messagesPages.newMessageText = action.newText
+        } else if (action.type === UPDATE_NEW_MESSAGE_TEXT) {
+            this._state.messagesPages.newMessageText = action.newTextForMessage
             this._callSubscriber(this._state)
         }
     }
 }
 
 export const addPostActionCreator = () => ({type: ADD_POST})
-export const updateNewPostTextActionCreator = (value) => ({type: UPDATE_NEW_POST_TEXT, newText: value})
+export const updateNewPostTextActionCreator = (value) => ({type: UPDATE_NEW_POST_TEXT, newTextForPost: value})
 export const addNewMessageActionCreator = () => ({type: ADD_MESSAGE})
-export const onChangeMessageActionCreator = (value) => ({type: UPDATE_NEW_MESSAGE_TEXT, newText: value})
+export const onChangeMessageActionCreator = (value) => ({type: UPDATE_NEW_MESSAGE_TEXT, newTextForMessage: value})
 
 
 // export let state = {
