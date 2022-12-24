@@ -4,12 +4,12 @@ let renderEntireTree = () => {
 
 export let store = {
     _state: {
-        _profilePages: {
-            _posts: [
+        profilePages: {
+            posts: [
                 {id: 1, message: 'Hi, how are you', likesCount: 50},
                 {id: 2, message: 'It\'s my first post', likesCount: 21},
             ],
-            _newPostText: 'it-kamasutra',
+            newPostText: 'it-kamasutra',
         },
         messagesPages: {
             dialogs: [
@@ -76,47 +76,43 @@ export let store = {
     getState() {
         return this._state
     },
-    renderEntireTree() {
+    _callSubscriber() {
         console.log('state was changed')
     },
     addPost() {
         let newPost = {
             id: 3,
-            message: state.profilePages.newPostText,
+            message: this._state.profilePages.newPostText,
             likesCount: 123
         }
-        if (state.profilePages.newPostText) {
-            state.profilePages.posts.push(newPost)
-            state.profilePages.newPostText = ''
+        if (this._state.profilePages.newPostText) {
+            this._state.profilePages.posts.push(newPost)
+            this._state.profilePages.newPostText = ''
         }
-        renderEntireTree(state)
+        this._callSubscriber(this._state)
     },
     updateNewMessageText(newText) {
-        state.messagesPages.newMessageText = newText
-        renderEntireTree(state)
+        this._state.messagesPages.newMessageText = newText
+        this._callSubscriber(this._state)
     },
     updateNewPostText(newText) {
-        state.profilePages.newPostText = newText
-        renderEntireTree(state)
+        this._state.profilePages.newPostText = newText
+        this._callSubscriber(this._state)
     },
     subscribe(observer) {
-        renderEntireTree = observer
+        this._callSubscriber = observer
     },
     addMessage() {
-
         let newMessage = {
             id: 4,
-            message: state.messagesPages.newMessageText,
+            message: this._state.messagesPages.newMessageText,
             likesCount: 23
         }
-        if (state.messagesPages.newMessageText) {
-            state.messagesPages.messages.push(newMessage)
-            state.messagesPages.newMessageText = ''
+        if (this._state.messagesPages.newMessageText) {
+            this._state.messagesPages.messages.push(newMessage)
+            this._state.messagesPages.newMessageText = ''
         }
-
-
-        renderEntireTree(state)
-
+        renderEntireTree(this._state)
     },
 }
 
@@ -195,49 +191,49 @@ export let store = {
 
 window.store = store
 
-export const addPost = () => {
-
-    let newPost = {
-        id: 3,
-        message: state.profilePages.newPostText,
-        likesCount: 123
-    }
-    if (state.profilePages.newPostText) {
-        state.profilePages.posts.push(newPost)
-        state.profilePages.newPostText = ''
-    }
-
-    renderEntireTree(state)
-
-}
-
-export const addMessage = () => {
-
-    let newMessage = {
-        id: 4,
-        message: state.messagesPages.newMessageText,
-        likesCount: 23
-    }
-    if (state.messagesPages.newMessageText) {
-        state.messagesPages.messages.push(newMessage)
-        state.messagesPages.newMessageText = ''
-    }
-
-
-    renderEntireTree(state)
-
-}
-
-export const updateNewMessageText = (newText) => {
-    state.messagesPages.newMessageText = newText
-    renderEntireTree(state)
-}
-
-export const updateNewPostText = (newText) => {
-    state.profilePages.newPostText = newText
-    renderEntireTree(state)
-}
-
-export const subscribe = (observer) => {
-    renderEntireTree = observer
-}
+// export const addPost = () => {
+//
+//     let newPost = {
+//         id: 3,
+//         message: state.profilePages.newPostText,
+//         likesCount: 123
+//     }
+//     if (state.profilePages.newPostText) {
+//         state.profilePages.posts.push(newPost)
+//         state.profilePages.newPostText = ''
+//     }
+//
+//     renderEntireTree(state)
+//
+// }
+//
+// export const addMessage = () => {
+//
+//     let newMessage = {
+//         id: 4,
+//         message: state.messagesPages.newMessageText,
+//         likesCount: 23
+//     }
+//     if (state.messagesPages.newMessageText) {
+//         state.messagesPages.messages.push(newMessage)
+//         state.messagesPages.newMessageText = ''
+//     }
+//
+//
+//     renderEntireTree(state)
+//
+// }
+//
+// export const updateNewMessageText = (newText) => {
+//     state.messagesPages.newMessageText = newText
+//     renderEntireTree(state)
+// }
+//
+// export const updateNewPostText = (newText) => {
+//     state.profilePages.newPostText = newText
+//     renderEntireTree(state)
+// }
+//
+// export const subscribe = (observer) => {
+//     renderEntireTree = observer
+// }
