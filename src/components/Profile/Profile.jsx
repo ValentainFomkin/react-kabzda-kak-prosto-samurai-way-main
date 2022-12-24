@@ -9,9 +9,9 @@ export const Profile = (props) => {
         <div>
             <ProfileInfo/>
             <MyPosts posts={props.profilePages.posts}
-                     addPost={props.addPost}
+                     dispatch={props.dispatch}
                      newPostText={props.profilePages.newPostText}
-                     updateNewPostText={props.updateNewPostText}
+                // updateNewPostText={props.updateNewPostText}
             />
         </div>
     )
