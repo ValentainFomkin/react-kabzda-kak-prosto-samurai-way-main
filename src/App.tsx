@@ -53,8 +53,9 @@ export type PostsProps = {
     message: string,
     likesCount: number
 }
-
+ 
 export const App = (props: AppPropsType) => {
+
     return (
         <div className='app-wrapper'>
             <Header/>
