@@ -7,15 +7,16 @@ import {addNewMessageActionCreator, onChangeMessageActionCreator} from "../../re
 
 export const Dialogs = (props) => {
 
-    
-    let dialogElements = props.state.dialogs.map((d, index) => <DialogItem key={index}
-                                                                           avatar={d.avatar}
-                                                                           name={d.name}
-                                                                           id={d.id}/>)
+    let state = props._state.getState().messagesPages
 
-    let messageElement = props.state.messages.map((m, index) => <Message key={index} message={m.message} id={m.id}/>)
+    let dialogElements = state.dialogs.map((d, index) => <DialogItem key={index}
+                                                                     avatar={d.avatar}
+                                                                     name={d.name}
+                                                                     id={d.id}/>)
 
-    let newMessageText = props.state.newMessageText
+    let messageElement = state.messages.map((m, index) => <Message key={index} message={m.message} id={m.id}/>)
+
+    let newMessageText = state.newMessageText
 
     // let newMessageElement = React.createRef()
 
