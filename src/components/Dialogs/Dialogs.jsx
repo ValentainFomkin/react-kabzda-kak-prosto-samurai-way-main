@@ -7,7 +7,7 @@ import {addNewMessageActionCreator, onChangeMessageActionCreator} from "../../re
 
 export const Dialogs = (props) => {
 
-
+    
     let dialogElements = props.state.dialogs.map((d, index) => <DialogItem key={index}
                                                                            avatar={d.avatar}
                                                                            name={d.name}
