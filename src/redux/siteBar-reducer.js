@@ -1,4 +1,4 @@
-const siteBarReducer = (state, action) => {
+export const siteBarReducer = (state, action) => {
 
     return state
 }
