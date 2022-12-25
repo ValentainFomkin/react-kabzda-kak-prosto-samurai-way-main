@@ -5,7 +5,7 @@ import {addPostActionCreator, updateNewPostTextActionCreator} from "../../../red
 
 
 export const MyPosts = (props) => {
-    
+
 
     let postElements = props.posts.map((p, index) => {
         return (
