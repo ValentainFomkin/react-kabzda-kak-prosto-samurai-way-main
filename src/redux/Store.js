@@ -85,9 +85,9 @@ export let store = {
     },
 
     dispatch(action) {
-        profileReducer(this._state.profilePages, action)
-        dialogsReducer(this._state.messagesPages, action)
-        siteBarReducer(this._state.siteBarPages, action)
+        this.profilePages = profileReducer(this._state.profilePages, action)
+        this.messagesPages = dialogsReducer(this._state.messagesPages, action)
+        this.siteBarPages = siteBarReducer(this._state.siteBarPages, action)
 
         this._callSubscriber(this._state)
     }
